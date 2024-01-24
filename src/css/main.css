@@ -35,3 +35,8 @@ textarea {
   margin-top: 40px;
   resize: none;
 }
+
+textarea::placeholder {
+  opacity: 1 !important;
+  color: inherit;
+}

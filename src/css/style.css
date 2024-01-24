@@ -9,9 +9,15 @@ main {
   padding: 20px;
 }
 
-.logo img {
+.content-container {
+  margin-top: 40px;
+}
+
+.logo-img {
+  position: absolute;
   margin: 0px;
   padding: 0px;
+  left: -10px;
 }
 
 article {
@@ -60,13 +66,14 @@ article {
   border-radius: 32px;
   padding: 20px;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .dictionary {
   text-align: center;
   color: var(--db-4);
   margin: auto auto;
-  height: 90%;
+  height: 100%;
 }
 
 .dictionary img {
@@ -74,7 +81,24 @@ article {
 }
 
 .dictionary-container {
-  align-items: center;
-  align-content: center;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 0;
+}
+
+.dictionary-container p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.dictionary-container img {
+  margin-bottom: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.dictionary-container h2 {
+  margin-bottom: 20px;
+  margin-top: auto;
 }
