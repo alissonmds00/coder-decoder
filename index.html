@@ -15,30 +15,28 @@
 
 <body>
   <main>
+    <img class="logo-img" src="./src/images/alura.svg" alt="">
     <article>
-      <img class="logo-img" src="./src/images/alura.svg" alt="">
       <div class="content-container">
-        <textarea name="texto" id="texto" class="textarea" cols="30" rows="9" placeholder="Digite seu texto"></textarea>
+        <textarea autofocus name="texto" id="texto" class="textarea" cols="30" rows="9" placeholder="Digite seu texto"></textarea>
         <div class="note gray-4">
           <img src="./src/images/sign.svg" alt="">
           <p class="gray-4">Apenas letras minúsculas e sem acento</p>
         </div>
         <div class="buttons">
-          <button>Criptografar</button>
-          <button>Descriptografar</button>
+          <button id="criptografar" onclick="clickCriptografar()">Criptografar</button>
+          <button id="descriptografar">Descriptografar</button>
         </div>
       </div>
     </article>
     <section class="dictionary">
       <div class="dictionary-background">
-        <div class="dictionary-container">
-          <img src="./src/images/char.svg" alt="">
-          <h2 class="bold f-24 gray-5">Nenhuma imagem encontrada</h2>
-          <p class="gray-4">Digite um texto que você deseja criptografar ou descriptografar.</p>
-        </div>
+        <ul class="dictionary-container">
+        </ul>
       </div>
     </section>
   </main>
+  <script src="./src/main.js"></script>
 </body>
 
 </html>

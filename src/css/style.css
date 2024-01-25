@@ -5,20 +5,15 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  padding: 20px;
+  grid-template-columns: auto 2fr 1fr;
+  margin: 20px;
+  gap: 20px;
 }
 
 .content-container {
-  margin-top: 40px;
+  /*margin-top: 40px; /* overflow tá aqui */
 }
 
-.logo-img {
-  position: absolute;
-  margin: 0px;
-  padding: 0px;
-  left: -10px;
-}
 
 article {
   margin: 0 auto;
@@ -101,4 +96,8 @@ article {
 .dictionary-container h2 {
   margin-bottom: 20px;
   margin-top: auto;
+}
+
+.sentence {
+  margin-bottom: 5px;
 }

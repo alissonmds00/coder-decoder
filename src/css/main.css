@@ -5,8 +5,9 @@ h3,
 h4,
 blockquote,
 dd,
-dt {
+dt, ul {
   margin: 0px;
+  padding: 0px;
 }
 
 body {
@@ -39,4 +40,9 @@ textarea {
 textarea::placeholder {
   opacity: 1 !important;
   color: inherit;
+}
+
+li {
+  list-style: none;
+  text-align: justify;
 }
