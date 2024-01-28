@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Decodificador</title>
-  <link rel="stylesheet" href="src/css/style.css">
   <link rel="stylesheet" href="src/css/main.css">
+  <link rel="stylesheet" href="src/css/style.css">
   <link rel="stylesheet" href="src/css/color.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,14 +18,14 @@
     <img class="logo-img" src="./src/images/alura.svg" alt="">
     <article>
       <div class="content-container">
-        <textarea autofocus name="texto" id="texto" class="textarea" cols="30" rows="8" placeholder="Digite seu texto"></textarea>
+        <textarea autofocus name="texto" id="texto" class="textarea" cols="30" rows="9" placeholder="Digite seu texto"></textarea>
         <div class="note gray-4">
           <img src="./src/images/sign.svg" alt="">
           <p class="gray-4">Apenas letras minúsculas e sem acento</p>
         </div>
         <div class="buttons">
           <button id="criptografar" onclick="clickCriptografar()">Criptografar</button>
-          <button id="descriptografar">Descriptografar</button>
+          <button id="descriptografar" onclick="clickDescriptografar()">Descriptografar</button>
         </div>
       </div>
     </article>
@@ -33,7 +33,7 @@
       <div class="dictionary-background">
         <ul class="dictionary-container">
         </ul>
-        <button id="copiar" class="disabled">Copiar</button>
+        <button id="copiar" class="disabled" onclick="copy()">Copiar</button>
       </div>
     </section>
   </main>

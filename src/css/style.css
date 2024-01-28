@@ -1,28 +1,41 @@
 body {
   position: relative;
   font-family: "Inter", sans-serif;
-  margin: auto auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 main {
-  max-width: 1200px;
+  max-width: 1300px;
+  height: 100vh;
   display: grid;
   grid-template-columns: auto 2fr 1fr;
-  margin: 20px auto;
   gap: 20px;
+  flex-grow: 1;
 }
 
-.content-container {
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.textarea {
-  padding-top: 40px;
+.logo-img {
+  margin: 20px;
+  margin-top: 40px;
 }
 
 article {
   margin: 0 auto;
+  width: 100%;
+}
+
+.content-container {
+  height: 100%;
+}
+
+.textarea {
+  color: var(--db-3);
+  font-size: 32px;
+  margin-top: 40px;
+  width: 100%;
+
+  padding-top: 40px;
 }
 
 .note {
@@ -75,6 +88,7 @@ button:hover {
 }
 
 .dictionary-background {
+  flex: 1;
   background: var(--white);
   border-radius: 32px;
   padding: 20px;
@@ -98,20 +112,15 @@ button:hover {
   position: relative;
   width: 100%;
   grid-row: 1;
-}
-
-/*.dictionary-container.item{
-  height: 75%;
   margin-bottom: 10px;
-
 }
-*/
 
-.dictionary-container li {
-  max-width: 30ch;
+.sentences {
+  width: 40ch;
   word-break: break-all;
   font-size: 1.5rem;
   color: var(--gray-4);
+  padding: 5px;
 }
 
 .dictionary-container p {
@@ -120,7 +129,6 @@ button:hover {
 }
 
 .dictionary-container img {
-  margin-bottom: 20px;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -130,10 +138,9 @@ button:hover {
   margin-top: auto;
 }
 
-.sentence {
-  padding: 5px;
-}
 
 .disabled {
   display: none;
 }
+
+

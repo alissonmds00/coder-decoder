@@ -5,11 +5,12 @@ const criptografarButton = document.querySelector("#criptografar");
 const descriptografarButton = document.querySelector("#descriptografar");
 const copiarButton = document.querySelector("#copiar");
 
+const dictionaryContainer = document.querySelector(".dictionary-container");
+
 function dictionaryContent() {
-  const dictionaryContainer = document.querySelector(".dictionary-container");
   if (newSentences.length) {
     copiarButton.classList.remove("disabled");
-    document.querySelector(".dictionary-container").classList.add("item")
+    document.querySelector(".dictionary-container").classList.add("item");
   } else {
     copiarButton.classList.add("disabled");
   }
@@ -30,6 +31,13 @@ function dictionaryContent() {
 
 function clickCriptografar() {
   criptografar(input.value);
+  input.focus()
+  input.value = ''
+}
+
+function clickDescriptografar() {
+  let criptoSentence = descriptografar(input.value);
+  input.value = criptoSentence
 }
 
 function criptografar(value) {
@@ -44,4 +52,34 @@ function criptografar(value) {
   return value;
 }
 
-dictionaryContent();
+function descriptografar(value) {
+  const regex = [/ai/g, /enter/g, /imes/g, /bober/g, /ufat/g]
+  value = value.replace(regex[0], 'a')
+  value = value.replace(regex[1], 'e')
+  value = value.replace(regex[2], 'i')
+  value = value.replace(regex[3], 'o')
+  value = value.replace(regex[4], 'u')
+  return value
+}
+
+
+let selectedSentence;
+const sentences = document.getElementsByClassName("sentence");
+const arraySentences = Array.from(sentences);
+arraySentences.forEach((sentence) => {
+  console.log(sentence);
+  sentence.addEventListener("click", selectSentence(sentence));
+});
+
+function selectSentence(e) {
+  const target = e.currentTarget;
+  selectedSentence = target.innerText;
+  console.log(selectedSentence)
+}
+
+function copy() {
+  console.log(selectedSentence);
+  navigator.clipboard.writeText(selectedSentence);
+}
+
+dictionaryContent()
