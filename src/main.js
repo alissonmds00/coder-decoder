@@ -4,6 +4,7 @@ const input = document.querySelector("#texto");
 const criptografarButton = document.querySelector("#criptografar");
 const descriptografarButton = document.querySelector("#descriptografar");
 const copiarButton = document.querySelector("#copiar");
+const modeSelect = document.querySelector("#mode");
 
 const dictionaryContainer = document.querySelector(".dictionary-container");
 
@@ -29,39 +30,49 @@ function dictionaryContent() {
   dictionaryContainer.innerHTML = content;
 }
 
+// criptografia e descriptografia
+
 function clickCriptografar() {
   criptografar(input.value);
-  input.focus()
-  input.value = ''
+  input.focus();
+  input.value = "";
 }
 
 function clickDescriptografar() {
   let criptoSentence = descriptografar(input.value);
-  input.value = criptoSentence
+  input.value = criptoSentence;
 }
 
 function criptografar(value) {
-  const regex = [/a/g, /e/g, /i/g, /o/g, /u/g];
-  value = value.replace(regex[0], "ai");
-  value = value.replace(regex[1], "enter");
-  value = value.replace(regex[2], "imes");
-  value = value.replace(regex[3], "ober");
-  value = value.replace(regex[4], "ufat");
+  const converter = {
+    a: "ai",
+    e: "enter",
+    i: "imes",
+    o: "ober",
+    u: "ufat",
+  };
+  value = value
+    .split("")
+    .map((char) => converter[char] || char)
+    .join("");
   newSentences.push(value);
   dictionaryContent();
   return value;
 }
 
 function descriptografar(value) {
-  const regex = [/ai/g, /enter/g, /imes/g, /bober/g, /ufat/g]
-  value = value.replace(regex[0], 'a')
-  value = value.replace(regex[1], 'e')
-  value = value.replace(regex[2], 'i')
-  value = value.replace(regex[3], 'o')
-  value = value.replace(regex[4], 'u')
-  return value
+  const regex = [/ai/g, /enter/g, /imes/g, /ober/g, /ufat/g];
+  value = value
+    .replace(regex[0], "a")
+    .replace(regex[1], "e")
+    .replace(regex[2], "i")
+    .replace(regex[3], "o")
+    .replace(regex[4], "u");
+  console.log(value);
+  return value;
 }
 
+// interações
 
 let selectedSentence;
 const sentences = document.getElementsByClassName("sentence");
@@ -74,7 +85,7 @@ arraySentences.forEach((sentence) => {
 function selectSentence(e) {
   const target = e.currentTarget;
   selectedSentence = target.innerText;
-  console.log(selectedSentence)
+  console.log(selectedSentence);
 }
 
 function copy() {
@@ -82,4 +93,4 @@ function copy() {
   navigator.clipboard.writeText(selectedSentence);
 }
 
-dictionaryContent()
+dictionaryContent();
