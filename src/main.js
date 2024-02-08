@@ -96,8 +96,13 @@ arraySentences.forEach((sentence) => {
 });
 
 function selectSentence(e) {
-  const target = e.currentTarget;
-  const selectedSentence = target.innerText;
+  //const target = e.currentTarget;
+  //const selectedSentence = target.innerText;
+  const selectedSentence = this.innerText;
+  copy(selectedSentence);
+}
+
+function copy(selectedSentence) {
   navigator.clipboard.writeText(selectedSentence);
 }
 
