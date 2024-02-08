@@ -28,12 +28,16 @@ article {
 
 .content-container {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 95vh;
 }
 
 .textarea {
   color: var(--db-3);
   font-size: 32px;
-  margin-top: 40px;
+  margin-top: 60px;
   width: 100%;
 
   padding-top: 40px;
@@ -143,7 +147,7 @@ button:hover {
 .dictionary-functions {
   display: flex;
   justify-content: space-between;
-  gap: 5%;
+  gap: 20px;
 }
 
 .dictionary-functions button {
@@ -166,5 +170,15 @@ button:hover {
   }
   .textarea {
     margin-top: 0px;
+  }
+  .sentences {
+    width: auto;
+    height: auto;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .buttons,
+  .dictionary-functions {
+    flex-direction: column;
   }
 }
