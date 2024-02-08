@@ -1,28 +1,31 @@
-const newSentences = [];
+const criptSentences = [];
+const decriptSentences = [];
 
 const input = document.querySelector("#texto");
 const criptografarButton = document.querySelector("#criptografar");
 const descriptografarButton = document.querySelector("#descriptografar");
 const copiarButton = document.querySelector("#copiar");
 const modeSelect = document.querySelector("#mode");
+const buttonDisplayMode = document.querySelector("#display-mode");
 
 const dictionaryContainer = document.querySelector(".dictionary-container");
 
-function dictionaryContent() {
-  if (newSentences.length) {
+function dictionaryContent(target = criptSentences) {
+  if (target.length) {
     copiarButton.classList.remove("disabled");
+    buttonDisplayMode.classList.remove("disabled");
     document.querySelector(".dictionary-container").classList.add("item");
   } else {
     copiarButton.classList.add("disabled");
   }
   const content =
-    newSentences.length == 0
+    target.length == 0
       ? `
     <img src="./src/images/char.svg" alt="">
     <h2 class="bold f-24 gray-5">Nenhuma mensagem encontrada</h2>
     <p class="gray-4">Digite um texto que você deseja criptografar ou descriptografar.</p>
   </div>`
-      : newSentences
+      : target
           .map((frase) => {
             return `<li class="sentence">${frase}</li>`;
           })
@@ -39,8 +42,9 @@ function clickCriptografar() {
 }
 
 function clickDescriptografar() {
-  let criptoSentence = descriptografar(input.value);
-  input.value = criptoSentence;
+  descriptografar(input.value);
+  input.focus();
+  input.value = "";
 }
 
 function criptografar(value) {
@@ -55,7 +59,7 @@ function criptografar(value) {
     .split("")
     .map((char) => converter[char] || char)
     .join("");
-  newSentences.push(value);
+  criptSentences.push(value);
   dictionaryContent();
   return value;
 }
@@ -68,13 +72,22 @@ function descriptografar(value) {
     .replace(regex[2], "i")
     .replace(regex[3], "o")
     .replace(regex[4], "u");
-  console.log(value);
+  decriptSentences.push(value);
+  dictionaryContent(decriptSentences);
   return value;
+}
+
+function renderContent() {
+  buttonDisplayMode.classList.toggle("criptografar");
+  if (buttonDisplayMode.classList.contains("criptografar")) {
+    dictionaryContent();
+  } else if (buttonDisplayMode.classList.contains("disabled") == false) {
+    dictionaryContent(decriptSentences);
+  }
 }
 
 // interações
 
-let selectedSentence;
 const sentences = document.getElementsByClassName("sentence");
 const arraySentences = Array.from(sentences);
 arraySentences.forEach((sentence) => {
@@ -84,12 +97,7 @@ arraySentences.forEach((sentence) => {
 
 function selectSentence(e) {
   const target = e.currentTarget;
-  selectedSentence = target.innerText;
-  console.log(selectedSentence);
-}
-
-function copy() {
-  console.log(selectedSentence);
+  const selectedSentence = target.innerText;
   navigator.clipboard.writeText(selectedSentence);
 }
 

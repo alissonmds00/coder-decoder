@@ -138,9 +138,16 @@ button:hover {
   margin-top: auto;
 }
 
+.dictionary-functions {
+  display: flex;
+  justify-content: space-between;
+  gap: 5%;
+}
+
+.dictionary-functions button {
+  flex: 1;
+}
 
 .disabled {
   display: none;
 }
-
-
