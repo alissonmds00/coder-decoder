@@ -158,6 +158,10 @@ button:hover {
   display: none;
 }
 
+.selected {
+  background: var(--gray-2);
+}
+
 /* Responsiveness */
 @media (max-width: 850px) {
   main {

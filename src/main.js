@@ -10,41 +10,58 @@ const buttonDisplayMode = document.querySelector("#display-mode");
 
 const dictionaryContainer = document.querySelector(".dictionary-container");
 
+let selectedSentence;
+
 function dictionaryContent(target = criptSentences) {
+  let content;
   if (target.length) {
     copiarButton.classList.remove("disabled");
     buttonDisplayMode.classList.remove("disabled");
     document.querySelector(".dictionary-container").classList.add("item");
+
+    content = target
+      .map((frase) => {
+        return `<li class="sentence">${frase}</li>`;
+      })
+      .join("");
   } else {
     copiarButton.classList.add("disabled");
-  }
-  const content =
-    target.length == 0
-      ? `
+
+    content = `
     <img src="./src/images/char.svg" alt="">
     <h2 class="bold f-24 gray-5">Nenhuma mensagem encontrada</h2>
     <p class="gray-4">Digite um texto que você deseja criptografar ou descriptografar.</p>
-  </div>`
-      : target
-          .map((frase) => {
-            return `<li class="sentence">${frase}</li>`;
-          })
-          .join("");
+  </div>`;
+  }
+
   dictionaryContainer.innerHTML = content;
+
+  let sentences = document.getElementsByClassName("sentence");
+  let arraySentences = Array.from(sentences);
+  arraySentences.forEach((sentence) => {
+    sentence.addEventListener("click", function () {
+      sentence.classList.toggle("selected");
+      selectedSentence = sentence.innerText;
+    });
+  });
 }
 
 // criptografia e descriptografia
 
 function clickCriptografar() {
-  criptografar(input.value);
-  input.focus();
-  input.value = "";
+  if (input.value.length) {
+    criptografar(input.value);
+    input.focus();
+    input.value = "";
+  }
 }
 
 function clickDescriptografar() {
-  descriptografar(input.value);
-  input.focus();
-  input.value = "";
+  if (input.value.length) {
+    descriptografar(input.value);
+    input.focus();
+    input.value = "";
+  }
 }
 
 function criptografar(value) {
@@ -88,22 +105,16 @@ function renderContent() {
 
 // interações
 
-const sentences = document.getElementsByClassName("sentence");
-const arraySentences = Array.from(sentences);
-arraySentences.forEach((sentence) => {
-  console.log(sentence);
-  sentence.addEventListener("click", selectSentence(sentence));
-});
-
 function selectSentence(e) {
-  //const target = e.currentTarget;
-  //const selectedSentence = target.innerText;
-  const selectedSentence = this.innerText;
+  const selectedSentence = e.currentTarget;
   copy(selectedSentence);
 }
 
-function copy(selectedSentence) {
+function copy() {
   navigator.clipboard.writeText(selectedSentence);
+  alert(
+    `'${selectedSentence}' foi copiado para a sua área de transferência. \n CTRL + V para utilizar.`
+  );
 }
 
 dictionaryContent();
