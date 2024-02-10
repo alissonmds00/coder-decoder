@@ -38,12 +38,16 @@ function dictionaryContent(target = criptSentences) {
 
   let sentences = document.getElementsByClassName("sentence");
   let arraySentences = Array.from(sentences);
-  arraySentences.forEach((sentence) => {
+  arraySentences.forEach((sentence, index) => {
     sentence.addEventListener("click", function () {
-      sentence.classList.toggle("selected");
       selectedSentence = sentence.innerText;
+      selectSentence(index);
     });
   });
+  function selectSentence(index) {
+    arraySentences.forEach((sentence) => sentence.classList.remove("selected"));
+    arraySentences[index].classList.add("selected");
+  }
 }
 
 // criptografia e descriptografia

@@ -159,7 +159,7 @@ button:hover {
 }
 
 .selected {
-  background: var(--gray-2);
+  background: var(--gray-1);
 }
 
 /* Responsiveness */
@@ -167,6 +167,7 @@ button:hover {
   main {
     grid-template-columns: 1fr;
     margin-top: 2%;
+    margin-bottom: 10%;
   }
   .logo-img {
     margin: 0;
