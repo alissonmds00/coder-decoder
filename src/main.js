@@ -111,7 +111,6 @@ function renderContent() {
 
 function selectSentence(e) {
   const selectedSentence = e.currentTarget;
-  console.log(selectedSentence)
   copy(selectedSentence);
 }
 
